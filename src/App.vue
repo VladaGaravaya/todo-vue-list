@@ -70,6 +70,7 @@ export default  {
       let el = this.todoList.find((x) => x.id === id)
       let idx = this.todoList.indexOf(el)
       this.todoList.splice(idx, 1)
+      M.toast({html: 'Task removed!'})
     },
     addItem: function(text){
       this.todoList.push({
@@ -81,6 +82,7 @@ export default  {
       })
       this.newId++
       this.$emit('update-id', this.newId)
+      M.toast({html: 'Task added!'})
     }
   }
 }

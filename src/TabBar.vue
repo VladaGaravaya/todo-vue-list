@@ -8,7 +8,8 @@
                     index === activeTab ? 'active' : '']"
             :id="index"
             @click="activate(index)">
-          <p :class="'color ' + color"></p>
+          <p v-if="color !== 'all'" :class="'color ' + color"></p>
+          <p v-else class="all-tab">All</p>
         </li>
         <li :class="[tabClass, 'star',
                     5 === activeTab ? 'active' : '']"
@@ -35,6 +36,7 @@ export default {
   },
   methods: {
     activate: function(i){
+      console.log(this.colors)
       this.activeTab = i;
       let filter = i === 0 ? 'all'
                   : i === 5 ? 'starred'
@@ -44,3 +46,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.all-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 1.5em;
+}
+</style>
